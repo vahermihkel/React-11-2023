@@ -4,7 +4,7 @@
 
 .nupu-stiil {
   font-weight: bold;
-  color: white;
+  color: rgb(40, 43, 39);
 }
 
 .nupu-stiil:hover {
@@ -14,6 +14,7 @@
 
 .nupu-stiil:active {
   background-color: black;
+  color: white
 }
 
 
