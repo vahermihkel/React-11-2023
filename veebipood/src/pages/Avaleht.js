@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 // div ja span on tühjused, aga div teeb uue rea, span ei tee
 
 // tumesinine - JavaScriptis sissekirjutatud sõnad: function, const, false, true, undefined
@@ -15,8 +14,23 @@ import React, { useState } from 'react'
 // heleroheline - number
 // {{{{{{{{{{{{{{[[[(((())))]]]}}}}}}}}}}}}}}
 
+// stiil + localStorage
+
 
 function Avaleht() {
+  // nii kui tahan midagi HTMLs muuta, ilma et muutuks URL, siis PEAN kasutama useState
+
+  // vasakpoolsed muutujad on HTMLs
+  //  kui ma vasakpoolseid muutujaid HTMLs ei kasuta, siis pole vaja useState teha
+  // parempoolsed on funktsioonid, mis uuendavad seda muutujat
+  //  uuendus toimub läbi sulgude seest antava uue väärtuse
+  //  alati peab selleks toimuma mingi sündmus (klikk, klahvivajutus, hiire liikumine)
+
+  // useState võrdusmärgist vasakul pool on alati 2 asja -> muutuja + funktsioon sulgude vahel
+  //  kandilised sulud tähendavad, et TÄPSELT 2 asja 
+  //        (loogelised sulud {} tähendaksid, et võib olla rohkem või vähem)
+  // useState peab alati olema imporditud ja useState sulgude sees anname esialgse väärtuse 
+  // (mis tuleb alati tagasi kui refresh tehakse või lehelt ära minnakse ja tagasi tullakse)
   const [kogus, uuendaKogus] = useState(7);
   const [laigitud, muudaLaigitud] = useState(false); // 0 - mittelaigitud, 1 - laigitud
   const [sonum, uuendaSonum] = useState("Uuenda kogust!");
@@ -44,6 +58,9 @@ function Avaleht() {
     uuendaKogus( kogus + 1  );
     uuendaSonum("Suurendatud!");
   }
+
+  // saadab logisid brauseri konsooli
+  // console.log("renderdasin HTMLi"); // käivitub kui läheb useState funktsioon käima
 
   return (
     <div>

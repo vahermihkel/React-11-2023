@@ -6,7 +6,7 @@ function Ostukorv() {
     <div>
       <div>Ostukorv on tühi</div>
       
-      <Link to="/avaleht">
+      <Link to="/">
         <button>Avalehele</button>
       </Link>
     </div>
