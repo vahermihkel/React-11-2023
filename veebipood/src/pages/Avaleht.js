@@ -31,9 +31,9 @@ function Avaleht() {
   //        (loogelised sulud {} tähendaksid, et võib olla rohkem või vähem)
   // useState peab alati olema imporditud ja useState sulgude sees anname esialgse väärtuse 
   // (mis tuleb alati tagasi kui refresh tehakse või lehelt ära minnakse ja tagasi tullakse)
-  const [kogus, uuendaKogus] = useState(7);
-  const [laigitud, muudaLaigitud] = useState(false); // 0 - mittelaigitud, 1 - laigitud
-  const [sonum, uuendaSonum] = useState("Uuenda kogust!");
+  const [kogus, uuendaKogus] = useState( Number(localStorage.getItem("kogus")) );
+  const [laigitud, muudaLaigitud] = useState( false ); // 0 - mittelaigitud, 1 - laigitud
+  const [sonum, uuendaSonum] = useState( "Uuenda kogust!" );
 
   // const kogus = 7
   // kogus = 8 xxxxxxxxxx
@@ -47,20 +47,24 @@ function Avaleht() {
   const nulli = () => { // Echmascript6
     uuendaKogus(0);
     uuendaSonum("Nullitud!");
+    localStorage.setItem("kogus", 0);
   }
 
   const vahenda = () => {
-    uuendaKogus( kogus - 1  );
+    uuendaKogus( kogus - 1 );
     uuendaSonum("Vähendatud!");
+    localStorage.setItem("kogus", kogus - 1);
   }
 
   const suurenda = () => {
-    uuendaKogus( kogus + 1  );
-    uuendaSonum("Suurendatud!");
+    uuendaKogus( kogus + 1 ); // uuendaKogus uuendab muutujat kogus
+    uuendaSonum("Suurendatud!"); // AGA alles siis kui loogeliste sulgude read on lõpuni jõudnud
+    localStorage.setItem("kogus", kogus + 1);
   }
 
   // saadab logisid brauseri konsooli
   // console.log("renderdasin HTMLi"); // käivitub kui läheb useState funktsioon käima
+  console.log(kogus);
 
   return (
     <div>

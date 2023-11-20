@@ -47,3 +47,17 @@
     <div width=300px>  <div width=30vw></div>  </div>
   */
 }
+
+.ikoon {
+  width: 30px;
+}
+
+.ikoon:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.ikoon:active {
+  box-shadow: 0 0 50px 10px;
+  background-color: transparent;
+}

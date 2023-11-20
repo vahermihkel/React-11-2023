@@ -7,6 +7,7 @@ import Ostukorv from "./pages/Ostukorv";
 import NotFound from "./pages/NotFound";
 import Seaded from './pages/Seaded';
 import { useState } from 'react';
+import Profiil from './pages/Profiil';
 // kui impordin node_modules sees siis, kirjutan kohe kausta nime, kust võtan
 // kui impordin meie failide seast (src kaustas olevatest), pean kirjutama algusesse "./" või "../"
 //   .js failidele ei pea lõppu panema laiendit .js
@@ -26,11 +27,11 @@ function App() {
   }
 
   return (
-    <div className={kasTume === "true" ? "tume": "App"}>
+    <div className={kasTume === "true" ? "tume" : "App"}>
       {/* .css failis:    .ikoon {width: 30px;} */}
-      {/* <img className="ikoon" src="/hele.png" alt="" /> */}
-      { kasTume === "false" && <img style={{"width": "30px"}} onClick={muudaTumedaks} src="/tume.png" alt="" />}
-      { kasTume === "true" && <img style={{"width": "30px"}} onClick={muudaHeledaks} src="/hele.png" alt="" />}
+      {/* <img style={{"width": "30px"}} src="/hele.png" alt="" /> */}
+      {kasTume === "false" && <img className="ikoon" onClick={muudaTumedaks} src="/tume.png" alt="" />}
+      {kasTume === "true" && <img className="ikoon" onClick={muudaHeledaks} src="/hele.png" alt="" />}
 
       <Link to="/">
         <img className="pilt" src="https://upload.wikimedia.org/wikipedia/en/9/99/Nobe_GT100.jpg" alt="" />
@@ -49,14 +50,21 @@ function App() {
         <button className="nupu-stiil">Seaded</button>
       </Link>
 
+      <Link to="/profiil">
+        <button className="nupu-stiil">Profiil</button>
+      </Link>
+
       {/* siin on valiidsete URLde nimistu, path="" jutumärkide sees */}
       <Routes>
-        <Route path="" element={ <Avaleht /> } />
-        <Route path="cart" element={ <Ostukorv /> } />
-    {/* <Route path="ostukorv/avaleht" element={ <div>SIIA SUUNAS</div> } /> */}
-        <Route path="lisa-toode" element={ <LisaToode /> } />
-        <Route path="seaded" element={ <Seaded /> } />
-        <Route path="*" element={ <NotFound /> } />
+        {/* localhost:3000     siis võta Avaleht seest returnis olev HTML */}
+        <Route path="" element={<Avaleht />} />
+        {/* localhost:3000/cart  Ostukorv.js return sees olev HTML  */}
+        <Route path="cart" element={<Ostukorv />} />
+        {/* <Route path="ostukorv/avaleht" element={ <div>SIIA SUUNAS</div> } /> */}
+        <Route path="lisa-toode" element={<LisaToode />} />
+        <Route path="seaded" element={<Seaded />} />
+        <Route path="profiil" element={<Profiil />} />
+        <Route path="*" element={<NotFound />} />
         {/* <Route path="*" element={ <Navigate to="avaleht" /> } /> */}
       </Routes>
 

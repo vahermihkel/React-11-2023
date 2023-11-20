@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 
 function LisaToode() {
-  const [sonum, m22raSonum] = useState("Lisa toode!");
+  const [sonum, m22raSonum] = useState("");
   const inputiLuger = useRef();
 
   function lisa() {
@@ -10,6 +10,9 @@ function LisaToode() {
     } else {
       m22raSonum("Toode lisatud: " + inputiLuger.current.value);
     }
+    // inputiLuger.current.value === "" ? 
+    // m22raSonum("Tühja nimetusega ei saa toodet lisada!") : 
+    // m22raSonum("Toode lisatud: " + inputiLuger.current.value);
   }
 
   return (
