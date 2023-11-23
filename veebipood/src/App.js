@@ -8,6 +8,8 @@ import NotFound from "./pages/NotFound";
 import Seaded from './pages/Seaded';
 import { useState } from 'react';
 import Profiil from './pages/Profiil';
+import Login from './pages/Login';
+import Tootajad from './pages/Tootajad';
 // kui impordin node_modules sees siis, kirjutan kohe kausta nime, kust võtan
 // kui impordin meie failide seast (src kaustas olevatest), pean kirjutama algusesse "./" või "../"
 //   .js failidele ei pea lõppu panema laiendit .js
@@ -54,6 +56,14 @@ function App() {
         <button className="nupu-stiil">Profiil</button>
       </Link>
 
+      <Link to="/login">
+        <button className="nupu-stiil">Logi sisse</button>
+      </Link>
+
+      <Link to="/töötajad">
+        <button className="nupu-stiil">Töötajad</button>
+      </Link>
+
       {/* siin on valiidsete URLde nimistu, path="" jutumärkide sees */}
       <Routes>
         {/* localhost:3000     siis võta Avaleht seest returnis olev HTML */}
@@ -64,6 +74,8 @@ function App() {
         <Route path="lisa-toode" element={<LisaToode />} />
         <Route path="seaded" element={<Seaded />} />
         <Route path="profiil" element={<Profiil />} />
+        <Route path="login" element={<Login />} />
+        <Route path="töötajad" element={<Tootajad />} />
         <Route path="*" element={<NotFound />} />
         {/* <Route path="*" element={ <Navigate to="avaleht" /> } /> */}
       </Routes>

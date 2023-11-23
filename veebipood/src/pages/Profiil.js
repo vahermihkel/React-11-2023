@@ -16,13 +16,15 @@ function Profiil() {
 
   const sisestaAadress = () => {
     if (aadViide.current.value === "") {
-      alert("Aadressi sisestamine on kohustuslik");
+      // alert("Aadressi sisestamine on kohustuslik");
+      toast.error("Aadressi sisestamine on kohustuslik");
       return; 
     }
 
     // väikseks teisendatud esimene täht      on sama     originaalne esimene täht
     if (aadViide.current.value[0].toLowerCase() === aadViide.current.value[0]) {
-      alert("Peab algama suure algustähega");
+      // alert("Peab algama suure algustähega");
+      toast.error("Peab algama suure algustähega");
       return; 
     }
 
@@ -47,12 +49,20 @@ function Profiil() {
 
   const sisestaEmail = () => {
     if (emailViide.current.value === "") {
-      alert("Emaili väli on tühi");
+      // alert("Emaili väli on tühi");
+      toast.error("Emaili väli on tühi");
       return; // <--- katkesta funktsioon, early return
     }
 
     if (emailViide.current.value.includes("@") === false) {
-      alert("Emailis peab olema @ märk");
+      // alert("Emailis peab olema @ märk");
+      toast.error("Emailis peab olema @ märk");
+      return; // <--- katkesta funktsioon, early return
+    }
+
+    if (emailViide.current.value.includes(".") === false) {
+      // alert("Emailis peab olema @ märk");
+      toast.error("Emailis peab olema . märk");
       return; // <--- katkesta funktsioon, early return
     }
 
@@ -62,7 +72,7 @@ function Profiil() {
 
   const sisestaTelefon = () => {
     if (telViide.current.value === "") {
-      toast("Telefoni sisestamine on kohustuslik!");
+      toast.error("Telefoni sisestamine on kohustuslik!");
       // alert("Telefoni sisestamine on kohustuslik");
       return; 
     }
@@ -70,7 +80,7 @@ function Profiil() {
     if (telViide.current.value.startsWith("+372") === false) {
       // https://fkhadra.github.io/react-toastify/introduction/ <- seadistada siin
       // https://react-hot-toast.com/ <- võite proovida peale panna (uudised)
-      toast("Pead sisestama algusesse Eesti suunakoodi!");
+      toast.error("Pead sisestama algusesse Eesti suunakoodi!");
       // alert("Pead sisestama algusesse Eesti suunakoodi");
       return; 
     }
@@ -105,7 +115,10 @@ function Profiil() {
       <button onClick={sisestaTelefon}>Sisesta</button> <br />
       <br />
 
-      <ToastContainer />
+      <ToastContainer 
+        position="bottom-right"
+        theme="dark"
+      />
     </div>
   )
 }

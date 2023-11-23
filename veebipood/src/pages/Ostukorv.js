@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
 function Ostukorv() {
+  // Coca, Fanta, Sprite
+
+  // kuvage HTMLs
   return (
     <div>
       <div>Ostukorv on tühi</div>

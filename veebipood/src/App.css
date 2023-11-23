@@ -61,3 +61,18 @@
   box-shadow: 0 0 50px 10px;
   background-color: transparent;
 }
+
+.error {
+  color: #e4175c;
+  font-size: 12px;
+  margin: 5px;
+}
+
+.red {
+  border: 2px solid red;
+  border-radius: 3px;
+}
+
+input {
+  outline: none;
+}
