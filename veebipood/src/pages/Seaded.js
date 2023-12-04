@@ -39,7 +39,6 @@ function Seaded() {
 
   const muudaKeelEst = () => {
     uuendaKeel("est");
-    // <--- siin panna ka localStorage-sse
     localStorage.setItem("keel","est");
   }
 

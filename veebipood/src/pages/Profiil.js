@@ -92,7 +92,8 @@ function Profiil() {
   // 1. vaadatakse sama projekti teistesse failidesse
   // 2. vaadatakse enda teistesse projektidesse (iseseisvatesse, tööprojektidesse)
   // 3. googeldamine / chatGPT
-  // 4. kaastöötaja käest küsimine
+  // 4. ise välja mõtlemine (peast)
+  // 5. kaastöötaja käest küsimine
 
   return (
     <div>
