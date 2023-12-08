@@ -1,7 +1,36 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 
 function Tootajad() {
-  const tootajad = ["Pille", "Kalle", "Malle", "Sille"];
+  const [tootajad, uuendaTootajad] = useState(["Pille", "Kalle", "Malle", "Sille"]);
+  const tootajaRef = useRef();
+
+  const kustuta = (i) => {
+    tootajad.splice(i,1); // i - järjekorranumber, 1 - 1tk kustutan
+    uuendaTootajad(tootajad.slice());
+  }
+
+  const lisa = () => {
+    // mingid oma vabalt valitud kontrollid
+    tootajad.push(tootajaRef.current.value);
+    uuendaTootajad(tootajad.slice());
+  }
+
+  return (
+    <div>
+      <label>Töötaja nimi</label> <br />
+      <input ref={tootajaRef} type="text" /> <br />
+      <button onClick={lisa}>Sisesta</button> <br />
+      {tootajad.map((element, ix) => <button onClick={() => kustuta(ix)}>{element}</button>)}
+    </div>
+  )
+}
+
+export default Tootajad
+
+      // {/* <button>Pille</button>
+      // <button>Kalle</button>
+      // <button>Malle</button>
+      // <button>Sille</button> */}
 
   // 8. E 12.00-14.15   3ak/h
   // 9. R 13.00-16.15   4ak/h
@@ -19,16 +48,3 @@ function Tootajad() {
   // ["Pille", "Kalle", "Malle", "Sille"].map("Kalle" => <button>Kalle</button> )
   // ["Pille", "Kalle", "Malle", "Sille"].map("Malle" => <button>Malle</button> )
   // ["Pille", "Kalle", "Malle", "Sille"].map("Sille" => <button>Sille</button> )
-  return (
-    <div>
-      {tootajad.map(element => <button>{element}</button>)}
-
-      {/* <button>Pille</button>
-      <button>Kalle</button>
-      <button>Malle</button>
-      <button>Sille</button> */}
-    </div>
-  )
-}
-
-export default Tootajad

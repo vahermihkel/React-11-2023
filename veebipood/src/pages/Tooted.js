@@ -1,10 +1,21 @@
+import { useState } from "react";
 
 function Tooted() {
-  const tooted = ["Nobe", "Tesla", "BMW"];
+  const [tooted, uuendaTooted] = useState(["Nobe", "Tesla", "BMW"]);
+
+  const kustuta = (indeks) => {
+    tooted.splice(indeks, 1);
+    uuendaTooted(tooted.slice());
+  }
 
   return (
       <div>
-          {tooted.map(element => <div>{element}</div>)}
+          {tooted.map((element, indeks) => 
+            <div>
+              <span>{element}</span>
+              <button onClick={() => kustuta(indeks)}>x</button>
+            </div>
+          )}
       </div>
   )
 }

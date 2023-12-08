@@ -5,9 +5,9 @@ function Ostukorv() {
   // Coca, Fanta, Sprite
   const [ostukorv, uuendaOstukorv] = useState(["Coca", "Fanta", "Sprite"]);
 
-  const kustuta = () => {
+  const kustuta = (mitmes) => {
 // .splice() on funktsioon kustutamiseks, mis vajab enda sulgude sisse mitmendat me kustutame ja mitu tk kustutame
-    ostukorv.splice(0,1); 
+    ostukorv.splice(mitmes,1); 
     uuendaOstukorv(ostukorv.slice()); // .slice() <- mälukoha kustutamiseks (koopia tegemiseks)
   }
 
@@ -21,15 +21,22 @@ function Ostukorv() {
       <button onClick={() => uuendaOstukorv(["Coca"])}>Jäta alles Coca</button>
       <button onClick={() => uuendaOstukorv(["Fanta"])}>Jäta alles Fanta</button>
       <button onClick={() => uuendaOstukorv(["Sprite"])}>Jäta alles Sprite</button>
-      <button onClick={kustuta}>Kustuta esimene</button>
+      <button onClick={() => kustuta(0)}>Kustuta esimene</button>
+      <button onClick={() => kustuta(1)}>Kustuta teine</button>
+      <button onClick={() => kustuta(2)}>Kustuta kolmas</button>
 
       <button onClick={() => uuendaOstukorv([])}>Tühjenda</button>
       {ostukorv.length > 0 && <div>Ostukorvis on {ostukorv.length} ese(t)</div>}
       
-      {ostukorv.map(toode => 
+          {/* Tsükkel:
+          1.  toode=Coca   jrknr=0
+          2.  toode=Fanta  jrknr=1
+          3.  toode=Sprite jrknr=2
+          */}
+      {ostukorv.map((toode, jrknr) => 
         <div>
           <span>{toode}</span>
-          <button>x</button>
+          <button onClick={() => kustuta(jrknr)}>x</button>
         </div> 
       )}
 
