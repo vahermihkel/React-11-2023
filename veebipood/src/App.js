@@ -13,10 +13,17 @@ import Tootajad from './pages/Tootajad';
 import Poed from './pages/Poed';
 import Tooted from './pages/Tooted';
 import Hinnad from './pages/Hinnad';
+import HaldaTooted from './pages/HaldaTooted';
+import PoedHalda from './pages/PoedHalda';
 // kui impordin node_modules sees siis, kirjutan kohe kausta nime, kust võtan
 // kui impordin meie failide seast (src kaustas olevatest), pean kirjutama algusesse "./" või "../"
 //   .js failidele ei pea lõppu panema laiendit .js
 //   teistele peab: .css   .svg    .json
+
+  // 8. E 12.00-14.15   3ak/h
+  // 9. R 13.00-16.15   4ak/h
+  // 10. 15.12 R  11.00-13.15   3ak/h
+  // 11. 18.12 E  12.00-15.15   4ak/h
 
 function App() {
   const [kasTume, muudaTume] = useState(localStorage.getItem("kasTumeTeema") || "false");
@@ -79,6 +86,14 @@ function App() {
         <button className="nupu-stiil">Hinnad</button>
       </Link>
 
+      <Link to="/halda">
+        <button className="nupu-stiil">Halda tooteid</button>
+      </Link>
+
+      <Link to="/halda-poode">
+        <button className="nupu-stiil">Halda poode</button>
+      </Link>
+
       {/* siin on valiidsete URLde nimistu, path="" jutumärkide sees */}
       <Routes>
         {/* localhost:3000     siis võta Avaleht seest returnis olev HTML */}
@@ -94,6 +109,8 @@ function App() {
         <Route path="poed" element={<Poed />} />
         <Route path="tooted" element={<Tooted />} />
         <Route path="hinnad" element={<Hinnad />} />
+        <Route path="halda" element={<HaldaTooted />} />
+        <Route path="halda-poode" element={<PoedHalda />} />
         <Route path="*" element={<NotFound />} />
         {/* <Route path="*" element={ <Navigate to="avaleht" /> } /> */}
       </Routes>

@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import ostukorvFailist from "../data/ostukorv.json";
 
 function Ostukorv() {
   // Coca, Fanta, Sprite
-  const [ostukorv, uuendaOstukorv] = useState(["Coca", "Fanta", "Sprite"]);
+  const [ostukorv, uuendaOstukorv] = useState(ostukorvFailist);
 
   const kustuta = (mitmes) => {
 // .splice() on funktsioon kustutamiseks, mis vajab enda sulgude sisse mitmendat me kustutame ja mitu tk kustutame
-    ostukorv.splice(mitmes,1); 
-    uuendaOstukorv(ostukorv.slice()); // .slice() <- mälukoha kustutamiseks (koopia tegemiseks)
+    ostukorvFailist.splice(mitmes,1); 
+    uuendaOstukorv(ostukorvFailist.slice()); // .slice() <- mälukoha kustutamiseks (koopia tegemiseks)
   }
 
   // kuvage HTMLs

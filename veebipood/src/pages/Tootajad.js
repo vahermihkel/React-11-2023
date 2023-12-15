@@ -32,9 +32,6 @@ export default Tootajad
       // <button>Malle</button>
       // <button>Sille</button> */}
 
-  // 8. E 12.00-14.15   3ak/h
-  // 9. R 13.00-16.15   4ak/h
-
   // Array (Massiiv, List) väljakuvamiseks on vaja see muutuja, mille sees on Array
   // (tema väärtus on kandilisest sulust kandilise suluni)
   // .map() abil, mille panen muutuja lõppu, loogeliste sulgude sisse

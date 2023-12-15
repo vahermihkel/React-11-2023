@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import poedFailist from "../data/poed.json";
 
 function Poed() {
@@ -60,17 +60,11 @@ function Poed() {
       uuendaPoed(vastus);
     }
 
-    const poodRef = useRef();
-
-    const lisa = () => {
-      // mingid oma vabalt valitud kontrollid
-      poed.push(poodRef.current.value);
-      uuendaPoed(poed.slice());
-    }
+    
 
     return (
         <div>
-            <button onClick={originaali}>Tagasi originaali</button>
+            <button onClick={originaali}>Filtrid maha</button>
             <br /><br />
             <button onClick={sorteeriAZ}>Sorteeri A-Z</button>
             <button onClick={sorteeriZA}>Sorteeri Z-A</button>
@@ -84,10 +78,6 @@ function Poed() {
             <button onClick={filtreeriKellelVah7Tahte}>Jäta alles kellel on vähemalt 7 tähte</button>
             <button onClick={filtreeriKellelKolmasTahtI}>Jäta alles kellel on kolmas täht 'i'</button>
             {poed.map(element => <div>{element}</div>)}
-
-            <label>Poe nimi</label> <br />
-            <input ref={poodRef} type="text" /> <br />
-            <button onClick={lisa}>Sisesta</button> <br />
         </div>
     )
 }

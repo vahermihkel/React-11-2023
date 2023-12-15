@@ -1,11 +1,23 @@
 import { useState } from "react";
+import tootedFailist from "../data/tooted.json";
+import ostukorvFailist from "../data/ostukorv.json";
+
+// see on Toodete esitlemise leht
+// saab ostukorvi panna
 
 function Tooted() {
-  const [tooted, uuendaTooted] = useState(["Nobe", "Tesla", "BMW"]);
+  const [tooted, uuendaTooted] = useState(tootedFailist);
 
-  const kustuta = (indeks) => {
-    tooted.splice(indeks, 1);
-    uuendaTooted(tooted.slice());
+  // siia toodete sorteerimine
+  // A-Z
+  // Z-A
+  // tähed kasvavalt
+  // tähed kahanevalt
+
+  const lisaOstukorvi = (toode) => {
+    // fail: ["Coca", "Fanta", "Sprite"]    
+    // fail.push("Red Bull") --->  ["Coca", "Fanta", "Sprite", "Red Bull"]   
+    ostukorvFailist.push(toode);
   }
 
   return (
@@ -13,7 +25,7 @@ function Tooted() {
           {tooted.map((element, indeks) => 
             <div>
               <span>{element}</span>
-              <button onClick={() => kustuta(indeks)}>x</button>
+              <button onClick={() => lisaOstukorvi(element)}>Lisa ostukorvi</button>
             </div>
           )}
       </div>
