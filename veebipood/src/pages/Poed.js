@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import poedFailist from "../data/poed.json";
+import { Link } from 'react-router-dom';
 
 function Poed() {
     const [poed, uuendaPoed] = useState(poedFailist);
@@ -10,52 +11,52 @@ function Poed() {
 
     const sorteeriAZ = () => {
       // poed.sort();
-      poed.sort((a, b) => a.localeCompare(b)); // a võrdle b-ga
+      poed.sort((a, b) => a.nimi.localeCompare(b.nimi)); // a võrdle b-ga
       uuendaPoed(poed.slice());
     }
 
     const sorteeriZA = () => {
-      poed.sort((a, b) => b.localeCompare(a));
+      poed.sort((a, b) => b.nimi.localeCompare(a.nimi));
       uuendaPoed(poed.slice());
     }
 
     const sorteeriTahedKasvavalt = () => {
-      poed.sort((a, b) => a.length - b.length);
+      poed.sort((a, b) => a.nimi.length - b.nimi.length);
       uuendaPoed(poed.slice());
     }
 
     const sorteeriTahedKahanevalt = () => {
-      poed.sort((a, b) => b.length - a.length);
+      poed.sort((a, b) => b.nimi.length - a.nimi.length);
       uuendaPoed(poed.slice());
     }
 
     const sorteeriKolmandaTaheJargi = () => {                      //   012
-      poed.sort((a, b) => a[2].localeCompare(b[2]));               //   Kristiine
+      poed.sort((a, b) => a.nimi[2].localeCompare(b.nimi[2]));               //   Kristiine
       uuendaPoed(poed.slice());
     }
 
     const filtreeriEgaLoppevad = () => {  
-      const vastus = poed.filter(yksPood => yksPood.endsWith("e"));
+      const vastus = poed.filter(yksPood => yksPood.nimi.endsWith("e"));
       uuendaPoed(vastus);
     }
 
     const filtreeriIsSisaldavad = () => {  
-      const vastus = poed.filter(yksPood => yksPood.includes("is"));
+      const vastus = poed.filter(yksPood => yksPood.nimi.includes("is"));
       uuendaPoed(vastus);
     }
 
     const filtreeriKellelOn9Tahte = () => {  
-      const vastus = poed.filter(yksPood => yksPood.length === 9);
+      const vastus = poed.filter(yksPood => yksPood.nimi.length === 9);
       uuendaPoed(vastus);
     }
 
     const filtreeriKellelVah7Tahte = () => {  
-      const vastus = poed.filter(yksPood => yksPood.length >= 7);
+      const vastus = poed.filter(yksPood => yksPood.nimi.length >= 7);
       uuendaPoed(vastus);
     }
 
     const filtreeriKellelKolmasTahtI = () => {  
-      const vastus = poed.filter(yksPood => yksPood[2] === "i");
+      const vastus = poed.filter(yksPood => yksPood.nimi[2] === "i");
       //      const vastus = poed.filter(yksPood => yksPood.charAt(2) === "i"); // character At
       uuendaPoed(vastus);
     }
@@ -77,7 +78,14 @@ function Poed() {
             <button onClick={filtreeriKellelOn9Tahte}>Jäta alles kellel on 9 tähte</button>
             <button onClick={filtreeriKellelVah7Tahte}>Jäta alles kellel on vähemalt 7 tähte</button>
             <button onClick={filtreeriKellelKolmasTahtI}>Jäta alles kellel on kolmas täht 'i'</button>
-            {poed.map(element => <div>{element}</div>)}
+            {poed.map((element, index) => 
+              <div>
+                {element.nimi} - {element.aadress}
+                <Link to={"/pood/" + index}>
+                  <button>Vaata lähemalt</button>
+                </Link>
+              </div>
+            )}
         </div>
     )
 }

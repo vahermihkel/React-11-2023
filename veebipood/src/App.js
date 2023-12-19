@@ -15,6 +15,9 @@ import Tooted from './pages/Tooted';
 import Hinnad from './pages/Hinnad';
 import HaldaTooted from './pages/HaldaTooted';
 import PoedHalda from './pages/PoedHalda';
+import YksPood from './pages/YksPood';
+import YksToode from './pages/YksToode';
+import YksTootaja from './pages/YksTootaja';
 // kui impordin node_modules sees siis, kirjutan kohe kausta nime, kust võtan
 // kui impordin meie failide seast (src kaustas olevatest), pean kirjutama algusesse "./" või "../"
 //   .js failidele ei pea lõppu panema laiendit .js
@@ -23,7 +26,15 @@ import PoedHalda from './pages/PoedHalda';
   // 8. E 12.00-14.15   3ak/h
   // 9. R 13.00-16.15   4ak/h
   // 10. 15.12 R  11.00-13.15   3ak/h
-  // 11. 18.12 E  12.00-15.15   4ak/h
+  // 11. 18.12 E  12.00-15.15   4ak/h    useParams, URL muutuja, objektid
+  // 12. 21.12 N  13.00-16.15   useParams, objektid Tooted, muudaToode, useNavigate()
+  // 13. 28.12 N  13.00-16.15   uue ENG projekti
+  // 14. 04.01 N  13.00-16.15
+  // 15. 08.01 E  13.00-16.15
+  // 16. 11.01 N  13.00-16.15
+  // 17. 15.01 E  13.00-16.15
+  // 18. 22.01 E   poolik päev 1.5h
+  // 19. 29.01 E   poolik päev 1.5h
 
 function App() {
   const [kasTume, muudaTume] = useState(localStorage.getItem("kasTumeTeema") || "false");
@@ -111,6 +122,11 @@ function App() {
         <Route path="hinnad" element={<Hinnad />} />
         <Route path="halda" element={<HaldaTooted />} />
         <Route path="halda-poode" element={<PoedHalda />} />
+        <Route path="pood/:index" element={<YksPood />} />
+        <Route path="toode/:index" element={<YksToode />} />
+        <Route path="töötaja" element={<YksTootaja />} />
+        {/* <Route path="et/toode/:id <--- ecoop" element={<YksToode />} />
+        <Route path=":name <--- selver" element={<YksToode />} /> */}
         <Route path="*" element={<NotFound />} />
         {/* <Route path="*" element={ <Navigate to="avaleht" /> } /> */}
       </Routes>
