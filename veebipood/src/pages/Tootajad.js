@@ -20,7 +20,7 @@ function Tootajad() {
       <label>Töötaja nimi</label> <br />
       <input ref={tootajaRef} type="text" /> <br />
       <button onClick={lisa}>Sisesta</button> <br />
-      {tootajad.map((element, ix) => <button onClick={() => kustuta(ix)}>{element}</button>)}
+      {tootajad.map((element, ix) => <button key={ix} onClick={() => kustuta(ix)}>{element}</button>)}
     </div>
   )
 }

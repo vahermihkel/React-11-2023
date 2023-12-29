@@ -12,6 +12,19 @@ function Ostukorv() {
     uuendaOstukorv(ostukorvFailist.slice()); // .slice() <- mälukoha kustutamiseks (koopia tegemiseks)
   }
 
+  const arvutaKogusumma = () => {
+    // [{nimi: "Coca", hind: 7}, {nimi: "Fanta", hind: 5}, {nimi: "Sprite", hind: 8}].forEach()
+    let summa = 0;
+    // summa = summa + 7;
+    // summa = summa + 5;
+    // summa = summa + 8;
+    //   {nimi: "Coca", hind: 7} => 7 =     0 + 7
+   //  {nimi: "Fanta", hind: 5} => 12 =     7 + 5
+   // {nimi: "Sprite", hind: 8} => 20 =    12 + 8
+    ostukorv.forEach(element => summa = summa + element.hind);
+    return summa;
+  }
+
   // kuvage HTMLs
   return (
     <div>
@@ -35,8 +48,10 @@ function Ostukorv() {
           3.  toode=Sprite jrknr=2
           */}
       {ostukorv.map((toode, jrknr) => 
-        <div>
-          <span>{toode}</span>
+        <div key={jrknr}>
+          <img className="pilt" src={toode.pilt} alt="" />
+          <span>{toode.nimi} </span>
+          <span>{toode.hind} €</span>
           <button onClick={() => kustuta(jrknr)}>x</button>
         </div> 
       )}
@@ -49,6 +64,8 @@ function Ostukorv() {
           </Link>
         </div>
       }
+
+      <div>{arvutaKogusumma()} €</div>
 
     </div>
   )

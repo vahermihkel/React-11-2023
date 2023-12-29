@@ -32,6 +32,12 @@
   transform: rotate(5deg);
 }
 
+.pilt-mitteaktiivne {
+  width: 200px;
+  filter: grayscale(100%);
+  opacity: 30%;
+}
+
 .kuldne {
   color: goldenrod;
 }
@@ -75,4 +81,14 @@
 
 input {
   outline: none;
+}
+
+.aktiivne {
+  border: 1px solid green;
+  background-color: rgb(240, 245, 240);
+}
+
+.mitte-aktiivne {
+  border: 1px solid red;
+  background-color: rgb(246, 242, 242);
 }

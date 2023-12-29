@@ -37,15 +37,35 @@ function Tooted() {
     ostukorvFailist.push(toode);
   }
 
+  const filtreeriNgaAlgavad = () => {
+    const vastus = tootedFailist.filter(toode => toode.nimi.startsWith("N"));
+    uuendaTooted(vastus);
+  }
+
+  const filtreeriBgaAlgavad = () => {
+    const vastus = tootedFailist.filter(toode => toode.nimi.startsWith("B"));
+    uuendaTooted(vastus);
+  }
+
+  const filtreeriTgaAlgavad = () => {
+    const vastus = tootedFailist.filter(toode => toode.nimi.startsWith("T"));
+    uuendaTooted(vastus);
+  }
+
   return (
       <div>
         <button onClick={sorteeriAZ}>Sorteeri A-Z</button>
         <button onClick={sorteeriZA}>Sorteeri Z-A</button>
         <button onClick={sorteeriTahedKasvavalt}>Sorteeri kasvavalt</button>
         <button onClick={sorteeriTahedKahanevalt}>Sorteeri kahanevalt</button>
+        <br /><br />
+        <button onClick={filtreeriNgaAlgavad}>N</button>
+        <button onClick={filtreeriBgaAlgavad}>B</button>
+        <button onClick={filtreeriTgaAlgavad}>T</button>
           {tooted.map((element, indeks) => 
-            <div>
-              <span>{element}</span>
+            <div key={indeks}>
+              <img className={element.aktiivne === true ? "pilt" : "pilt-mitteaktiivne"} src={element.pilt} alt="" />
+              <span>{element.nimi} - {element.hind} €</span>
               <button onClick={() => lisaOstukorvi(element)}>Lisa ostukorvi</button>
               <Link to={"/toode/" + indeks}>
                 <button>Vaata täpsemalt</button>

@@ -61,6 +61,11 @@ function Poed() {
       uuendaPoed(vastus);
     }
 
+    const arvutaTahedKokku = () => {
+      let summa = 0;
+      poed.forEach(element => summa = summa + element.nimi.length);
+      return summa;
+    }
     
 
     return (
@@ -79,7 +84,7 @@ function Poed() {
             <button onClick={filtreeriKellelVah7Tahte}>Jäta alles kellel on vähemalt 7 tähte</button>
             <button onClick={filtreeriKellelKolmasTahtI}>Jäta alles kellel on kolmas täht 'i'</button>
             {poed.map((element, index) => 
-              <div>
+              <div key={index}>
                 {element.nimi} - {element.aadress}
                 <Link to={"/pood/" + index}>
                   <button>Vaata lähemalt</button>

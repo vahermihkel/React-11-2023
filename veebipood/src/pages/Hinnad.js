@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
+import hinnadFailist from "../data/hinnad.json"
+
 
 function Hinnad() {
-  const [hinnad, uuendaHinnad] = useState([4,6,12,5,45, 321, 55, 77, 8, 9, 111]);
+  const [hinnad, uuendaHinnad] = useState(hinnadFailist);
 
   const hindKasvavalt = () => {
     hinnad.sort((a, b) => a - b);
@@ -33,6 +36,12 @@ function Hinnad() {
     uuendaHinnad(vastus);
   }
 
+  const arvutaNumbridKokku = () => {
+    let summa = 0;
+    hinnad.forEach(element => summa = summa + element);
+    return summa;
+  }
+
 
   return (
     <div>
@@ -42,7 +51,12 @@ function Hinnad() {
       <button onClick={filtreeriVah50}>Jäta alles väh 50</button>
       <button onClick={filtreeriKesSisaldab5}>Jäta alles kellel 5</button>
       <button onClick={filtreeriKesAlgab1ga}>Jäta alles kes algab 1ga</button>
-      {hinnad.map(hind => <div>{hind}</div>)}
+      {hinnad.map((hind, index) => 
+        <div key={index}>
+          <Link to={"/hind/" + index + "/test/" + hind + "/test2"}>
+            {hind}
+          </Link>
+        </div>)}
     </div>
   )
 }

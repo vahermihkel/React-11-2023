@@ -34,7 +34,7 @@ function PoedHalda() {
       <input ref={aadressRef} type="text" /> <br />
       <button onClick={lisa}>Sisesta</button> <br />
        {poed.map((element, index) => 
-        <div>
+        <div key={index}>
           <div>{element.nimi}</div>
           <div>{element.tel}</div>
           <div>{element.aadress}</div>

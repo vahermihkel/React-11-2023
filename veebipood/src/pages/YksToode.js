@@ -13,11 +13,12 @@ function YksToode() {
 
   return (
     <div>
-      <img src="" alt="" />
+      { leitud.aktiivne === false && <i>Toode on mitteaktiivne!</i> }
+      <img src={leitud.pilt} alt="" />
       <div>Järjekorranumber: {index}</div>
-      <div>Nimi: {leitud}</div>
-      <div>Hind: </div>
-      <div>Aktiivne: </div>
+      <div>Nimi: {leitud.nimi}</div>
+      <div>Hind: {leitud.hind}</div>
+      {/* <div>Aktiivne: {leitud.aktiivne}</div> */}
     </div>
   )
 }
