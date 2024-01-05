@@ -15,3 +15,7 @@
 .lang:active {
   padding: 1px;
 }
+
+.map {
+  height: 300px;
+}
