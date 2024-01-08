@@ -16,6 +16,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useTranslation } from 'react-i18next';
+import Supplier from './pages/admin/Supplier';
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -64,6 +65,7 @@ function App() {
         <Route path='admin/products' element={ <MaintainProducts /> } />
         <Route path='admin/categories' element={ <MaintainCategories /> } />
         <Route path='admin/shops' element={ <MaintainShops /> } />
+        <Route path='admin/supplier' element={ <Supplier /> } />
         <Route path='*' element={ <NotFound /> } /> 
       </Routes>
     </div>
@@ -74,11 +76,11 @@ export default App;
 
   // 13. 29.12 R  09.00-12.15   uue ENG projekti
   // 14. 04.01 N  09.00-12.15   KOJU: AddProduct+SingleProduct
-  // 15. 08.01 E  09.00-12.15   localStorage-sse ostukorvi + API päringud KOJU: Terve hunniku 11x
-  // 16. 11.01 N  13.00-16.15   andmebaas, objekt ostukorvis, kujundused KOJU: Proovitöö
-  // 17. 15.01 E  13.00-16.15   components KOJU: lõpuprojekt
-  // 18. 22.01 E   poolik päev 1.5h
-  // 19. 29.01 E   poolik päev 1.5h
+  // 15. 08.01 E  09.00-12.15   localStorage-sse ostukorvi, kujundused, API päringud KOJU: Terve hunniku 11x
+  // 16. 15.01 E  09.00-12.15   andmebaas, objekt ostukorvis KOJU: Proovitöö
+  // 17. 19.01 R  09.00-12.15   andmebaas, components KOJU: lõpuprojekt
+  // 18. 25.01 N   poolik päev 1.5h
+  // 19. 01.02 N   poolik päev 1.5h
 
   // KODUS:
   // +2 keelt juurde
@@ -96,3 +98,9 @@ export default App;
 
   // AddProduct (EditProduct järgi, kontrollida eesti keelsest kuidas tulem jäi)
   // SingleProduct (EditProduct järgi, kontrollida eesti keelsest kuidas tulem jäi)
+
+  // Eesti keelse projekti järgi: võtta .active true/false kasutusele
+  // HomePage --> pilt läheb must-valgeks kui on mitteaktiivne, 
+  //              lisa ostukorvi nupp ära peita kui on mitteaktiivne
+  // MaintainProducts --> taust on helepunane kui on mittaktiivne, taust on heleroheline kui on aktiivne
+  // SingleProduct --> kirjutada tekst "Toode on mitteaktiivne" kui ta on mitteaktiivne
