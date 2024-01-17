@@ -9,7 +9,12 @@ function HomePage() {
  
   const addToCart = (clickedProduct) => {
     const cartLS = JSON.parse(localStorage.getItem("cart")) || [];
-    cartLS.push(clickedProduct);
+    const index = cartLS.findIndex(product => product.toode.id === clickedProduct.id);
+    if (index >= 0) { // index on -1, kui ei leidnud
+      cartLS[index].kogus = cartLS[index].kogus + 1;
+    } else {
+      cartLS.push({"kogus": 1, "toode": clickedProduct});
+    }
     localStorage.setItem("cart", JSON.stringify(cartLS));
   }
 
@@ -55,10 +60,13 @@ function HomePage() {
       <div className="products">
         {products.map(product => 
           <div key={product.id} className="product"> 
-            <img className="image" src={product.image} alt="" />
+            <img className={product.active ? "image" : "image-not-active"} src={product.image} alt="" />
             <div> {product.name} </div>
             <div> {product.price} </div>
-            <button onClick={() => addToCart(product)}>Add to cart</button>
+            <button disabled={!product.active} onClick={() => addToCart(product)}>Add to cart</button>
+            {/* NUPP kuidas sattuda URL-le ja mingi omadus kaasa saata: product.id
+              see URL peab olema olemas App.js failis
+            */}
             <br />
             <br />
           </div>

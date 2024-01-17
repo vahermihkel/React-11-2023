@@ -59,6 +59,9 @@ function App() {
         <Route path='contact' element={ <ContactUs /> } /> 
         <Route path='shops' element={ <Shops /> } /> 
         <Route path='product' element={ <SingleProduct /> } /> 
+        {/*   <Route path='product/:MINGI_MUUTUJA' element={ <SingleProduct /> } />
+          :MINGI_MUUTUJA ---> selle pean kasutusele võtma SingleProduct.jsx failis
+        */}
         <Route path='admin' element={ <AdminHome /> } />
         <Route path='admin/add' element={ <AddProduct /> } />
         <Route path='admin/edit/:product_id' element={ <EditProduct /> } />
@@ -78,9 +81,9 @@ export default App;
   // 14. 04.01 N  09.00-12.15   KOJU: AddProduct+SingleProduct
   // 15. 08.01 E  09.00-12.15   localStorage-sse ostukorvi, kujundused, API päringud KOJU: Terve hunniku 11x
   // 16. 15.01 E  09.00-12.15   andmebaas, objekt ostukorvis KOJU: Proovitöö
-  // 17. 19.01 R  09.00-12.15   andmebaas, components KOJU: lõpuprojekt
+  // 17. 18.01 N  13.00-16.15   andmebaas, components KOJU: lõpuprojekt
   // 18. 25.01 N   poolik päev 1.5h
-  // 19. 01.02 N   poolik päev 1.5h
+  // 19. 01.02??? N   poolik päev 1.5h
 
   // KODUS:
   // +2 keelt juurde
@@ -90,17 +93,18 @@ export default App;
   // +Cart --> saab ostukorvi failist kätte
   //          tühjendamine, ühe kustutamine, ostukorvi kogusumma, dünaamika (kui on tühi siis..., kui on ostukorvis siis...)
   // +NotFound lehe võiks ilusamaks teha (mingi nupp, mis viiks kuhugi, mingi pilt?)
-  // MaintainProducts --> ühe kustutamine
-  // Panna Toastify peale -> toast hüppaks välja toodet kustutades ja toodet ostukorvi lisades
-  // Mõnele teisele projektile (veebipood) ka panna Bootstrap + tõlge
-  // Firebase-i üles(!)
-  // Kõik tõlked lisada
+  // +MaintainProducts --> ühe kustutamine
+  // +Panna Toastify peale -> toast hüppaks välja toodet kustutades ja toodet ostukorvi lisades
+  // +Mõnele teisele projektile (veebipood) ka panna Bootstrap + tõlge
+  // +Firebase-i üles(!)
+  // +Kõik tõlked lisada
 
-  // AddProduct (EditProduct järgi, kontrollida eesti keelsest kuidas tulem jäi)
-  // SingleProduct (EditProduct järgi, kontrollida eesti keelsest kuidas tulem jäi)
+  // +AddProduct (EditProduct järgi, kontrollida eesti keelsest kuidas tulem jäi)
+  // -SingleProduct (EditProduct järgi, kontrollida eesti keelsest kuidas tulem jäi)
+  // EditProductis dropdown AddProducti järgi
 
-  // Eesti keelse projekti järgi: võtta .active true/false kasutusele
-  // HomePage --> pilt läheb must-valgeks kui on mitteaktiivne, 
-  //              lisa ostukorvi nupp ära peita kui on mitteaktiivne
-  // MaintainProducts --> taust on helepunane kui on mittaktiivne, taust on heleroheline kui on aktiivne
+  // +Eesti keelse projekti järgi: võtta .active true/false kasutusele
+  // +HomePage --> pilt läheb must-valgeks kui on mitteaktiivne, 
+  // +             lisa ostukorvi nupp ära peita kui on mitteaktiivne
+  // +MaintainProducts --> taust on helepunane kui on mittaktiivne, taust on heleroheline kui on aktiivne
   // SingleProduct --> kirjutada tekst "Toode on mitteaktiivne" kui ta on mitteaktiivne

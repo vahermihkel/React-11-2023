@@ -52,6 +52,7 @@ function EditProduct() {
       <input ref={imageRef} type="text" defaultValue={found.image} /> <br />
       <label>Category</label> <br />
       <input ref={categoryRef} type="text" defaultValue={found.category} /> <br />
+      {/* KODUS, aga lisaks ref={}, tõsta <select> sisse ka defaultValue={} */}
       <label>Description</label> <br />
       <input ref={descriptionRef} type="text" defaultValue={found.description} /> <br />
       <label>Active</label> <br />

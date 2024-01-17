@@ -20,6 +20,9 @@
   transition: 0.5s;
 }
 
-.image-inactive {
-  
+.image-not-active {
+  height: 150px;
+  width: 150px;
+  filter: grayscale(100%);
+  opacity: 30%;   
 }
