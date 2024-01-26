@@ -1,11 +1,18 @@
-import React, { useState} from 'react'
-import productsFromFile from "../../data/products.json";
+import React, { useEffect, useState} from 'react'
+// import productsFromFile from "../../data/products.json";
 import "../../css/HomePage.css";
+import { Link } from 'react-router-dom';
 // import cartFromFile from "../../data/cart.json"
 // import { toast, ToastContainer } from "react-toastify";
  
 function HomePage() {
-  const [products, setProducts] = useState(productsFromFile);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch(process.env.REACT_APP_DB_URL_PRODUCTS)
+      .then(res => res.json())
+      .then(json => setProducts(json || []));
+  }, []);
  
   const addToCart = (clickedProduct) => {
     const cartLS = JSON.parse(localStorage.getItem("cart")) || [];
@@ -60,9 +67,11 @@ function HomePage() {
       <div className="products">
         {products.map(product => 
           <div key={product.id} className="product"> 
-            <img className={product.active ? "image" : "image-not-active"} src={product.image} alt="" />
-            <div> {product.name} </div>
-            <div> {product.price} </div>
+            <Link to={"/product/" + product.id}>
+              <img className={product.active ? "image" : "image-not-active"} src={product.image} alt="" />
+              <div> {product.name} </div>
+              <div> {product.price} </div>
+            </Link>
             <button disabled={!product.active} onClick={() => addToCart(product)}>Add to cart</button>
             {/* NUPP kuidas sattuda URL-le ja mingi omadus kaasa saata: product.id
               see URL peab olema olemas App.js failis

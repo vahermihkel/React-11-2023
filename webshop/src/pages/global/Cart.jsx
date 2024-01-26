@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import cartFromFile from '../../data/cart.json';
 // import "../../css/Cart.css"; // <-- see teeb CSSi globaalseks
 import styles from "../../css/Cart.module.css" // see teeb, et ta on ainult siin failis
+import ParcelMachines from '../../components/ParcelMachines';
  
 function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
@@ -68,6 +69,8 @@ function Cart() {
  
       {/* Show cart total */}
       <p>Total: ${calculateCartSum()}</p>
+
+      <ParcelMachines />
  
       {/* Button to empty cart */}
       <button onClick={() => emptyCart()}>Empty Cart</button>
